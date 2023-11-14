@@ -1,6 +1,10 @@
 import { Text, View, StyleSheet, Image } from 'react-native';
+import { useState } from 'react';
 
 export default function Input() {
+
+  const [input, setInput] = useState([]);
+  
   return (
     <View style={styles.container}>
       <Image style={styles.add} source={require('../assets/iconmonstr-plus-circle-filled-240.png')} />
