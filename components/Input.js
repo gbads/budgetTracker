@@ -4,10 +4,10 @@ import { useState } from 'react';
 export default function Input() {
 
   const [input, setInput] = useState([]);
-  
+
   return (
     <View style={styles.container}>
-      <Image style={styles.add} source={require('../assets/iconmonstr-plus-circle-filled-240.png')} />
+      <Image style={styles.add} source={require('../assets/add.png')} />
       <Text style={styles.paragraph}>
         Add Income/Expense
       </Text>
