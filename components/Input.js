@@ -27,11 +27,10 @@ export default function Input() {
         onRequestClose={() => setShowModal(!showModal)}
       >
         <View>
-          <View style={[styles.container, styles.gap ]}>
+          <View style={[styles.container, styles.gap]}>
             <Text>Income</Text>
             <Switch
               trackColor={{ false: "#1CD521", true: "#E63009" }}
-              thumbColor="#E5E5E5"
               ios_backgroundColor="#E5E5E5"
               onValueChange={toggleSwitch}
               value={isExpense}
@@ -57,6 +56,16 @@ export default function Input() {
         <Image style={styles.add} source={require("../assets/add.png")} />
         <Text style={styles.paragraph}>Add Income/Expense</Text>
       </Pressable>
+
+      {/* Output Component - set up using Redux or Firebase */}
+      {input.map((item) => {
+        return (
+          <View>
+            <Text>{item}</Text>
+          </View>
+        );
+      }
+      )}
     </View>
   );
 }
@@ -83,5 +92,4 @@ const styles = StyleSheet.create({
   gap: {
     gap: 5,
   },
-
 });
