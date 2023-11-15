@@ -7,11 +7,10 @@ import {
   Image,
   Modal,
   Pressable,
-  TextInput
+  TextInput,
 } from "react-native";
 import { useState } from "react";
 import { RadioButton, Card } from "react-native-paper";
-
 
 export default function App() {
   const [input, setInput] = useState([]);
@@ -21,11 +20,10 @@ export default function App() {
   const [expense, setExpense] = useState([]);
   const [text, onChangeText] = useState("");
   const [showModal, setShowModal] = useState(false);
-  const [family, setFamily] = useState(false); 
-  
+  const [family, setFamily] = useState(false);
 
   return (
-    <SafeAreaView style={styles.parent} >
+    <SafeAreaView style={styles.parent}>
       <Modal
         animationType="slide"
         visible={showModal}
@@ -57,7 +55,7 @@ export default function App() {
         </View>
       </Modal>
 
-{/* Refer to Radio Logic to change Firestore tables */}
+      {/* Refer to Radio Logic to change Firestore tables */}
       <View style={[styles.spaceAround, styles.container]}>
         <View style={styles.radioButton}>
           <RadioButton
@@ -79,19 +77,24 @@ export default function App() {
           <Text style={styles.radioLabel}>Family</Text>
         </View>
       </View>
-      <Pressable style={[styles.pseudoBtn, styles.container]} onPress={() => setShowModal(true)}>
+      <Pressable
+        style={[styles.pseudoBtn, styles.container]}
+        onPress={() => setShowModal(true)}
+      >
         <Image style={styles.add} source={require("./assets/add.png")} />
         <Text style={styles.paragraph}>Add Income/Expense</Text>
       </Pressable>
 
       {/* Output Component - set up using Redux or Firebase */}
-      {input.map((item, i) => {
-        return (
-          <View key={item[i]}>
-            <Text>{item}</Text>
-          </View>
-        );
-      })}
+      <View style={styles.output}>
+        {input.map((item, i) => {
+          return (
+            <View style={styles.item} key={item[i]}>
+              <Text>{item}</Text>
+            </View>
+          );
+        })}
+      </View>
     </SafeAreaView>
   );
 }
@@ -108,6 +111,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     padding: 24,
+  },
+  output: {
+    flex: 2,
+
+  },
+  item: {
+
   },
   paragraph: {
     margin: 0,
@@ -151,4 +161,3 @@ const styles = StyleSheet.create({
     color: "#333",
   },
 });
-
