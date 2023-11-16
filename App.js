@@ -16,7 +16,7 @@ export default function App() {
   const [input, setInput] = useState([{personal: 'true', expense: 'true', amount: 0, description: ''}]);
   const [isExpense, setIsExpense] = useState(true);
   const toggleSwitch = () => setIsExpense((previousState) => !previousState);
-   const [expense, setExpense] = useState(true);
+  const [expense, setExpense] = useState(true);
   const [text, onChangeText] = useState("");
   const [amount, onChangeAmount] = useState(0);
   const [showModal, setShowModal] = useState(false);
