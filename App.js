@@ -13,12 +13,12 @@ import { useState } from "react";
 import { RadioButton, Card } from "react-native-paper";
 
 export default function App() {
-  const [input, setInput] = useState([]);
+  const [input, setInput] = useState([{personal: 'true', expense: 'true', amount: 0, description: ''}]);
   const [isExpense, setIsExpense] = useState(true);
   const toggleSwitch = () => setIsExpense((previousState) => !previousState);
-  const [income, setIncome] = useState([]);
-  const [expense, setExpense] = useState([]);
+   const [expense, setExpense] = useState(true);
   const [text, onChangeText] = useState("");
+  const [amount, onChangeAmount] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const [family, setFamily] = useState(false);
 
@@ -40,10 +40,16 @@ export default function App() {
             />
             <Text>Expense</Text>
           </View>
+          <TextInput style={styles.input} onChangeText={onChangeAmount} />
           <TextInput style={styles.input} onChangeText={onChangeText} />
           <Pressable
             onPress={() => {
-              setInput([...input, text]);
+              setInput([...input, {
+                personal: family ? 'false':'true',
+                expense: expense ? 'true':'false',
+                amount: amount,
+                description: text
+              }]);
               setShowModal(!showModal);
             }}
           >
@@ -90,7 +96,10 @@ export default function App() {
         {input.map((item, i) => {
           return (
             <View style={styles.item} key={item[i]}>
-              <Text>{item}</Text>
+              <Text>{item.family ? 'Family':'Personal'}</Text>
+              <Text>{item.expense ? 'Expense' : 'Income'}</Text>
+              <Text>{item.amount}</Text>
+              <Text>{item.description}</Text>
             </View>
           );
         })}
