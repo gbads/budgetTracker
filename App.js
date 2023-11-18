@@ -10,10 +10,11 @@ import {
   TextInput,
 } from "react-native";
 import { useState } from "react";
+import CurrencyInput from "react-native-currency-input";
 import { RadioButton, Card } from "react-native-paper";
 
 export default function App() {
-  const [input, setInput] = useState([{personal: 'true', expense: 'true', amount: 0, description: ''}]);
+  const [input, setInput] = useState([]);
   const [isExpense, setIsExpense] = useState(true);
   const toggleSwitch = () => setIsExpense((previousState) => !previousState);
   const [expense, setExpense] = useState(true);
@@ -22,6 +23,7 @@ export default function App() {
   const [showModal, setShowModal] = useState(false);
   const [family, setFamily] = useState(false);
 
+  console.log(input);
   return (
     <SafeAreaView style={styles.parent}>
       <Modal
@@ -40,22 +42,21 @@ export default function App() {
             />
             <Text>Expense</Text>
           </View>
-          <TextInput style={styles.input} onChangeText={onChangeAmount} />
-          <TextInput style={styles.input} onChangeText={onChangeText} />
+          <CurrencyInput style={styles.input} value={amount} prefix="$" delimiter="," separator="." precision={2} minValue={0} onChangeValue={onChangeAmount}/>
+          <TextInput style={styles.input} value={text} onChangeText={onChangeText} />
           <Pressable
             onPress={() => {
               setInput([...input, {
                 personal: family ? 'false':'true',
                 expense: expense ? 'true':'false',
-                amount: amount,
-                description: text
+                amount: amount !== 0 && amount,
+                description: text !== "" && text
               }]);
               setShowModal(!showModal);
             }}
           >
             <Text>
-              {console.log(input)}
-              Submit
+              Done
             </Text>
           </Pressable>
         </View>
