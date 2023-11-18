@@ -9,12 +9,14 @@ import {
   Pressable,
   TextInput,
 } from "react-native";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CurrencyInput from "react-native-currency-input";
 import { RadioButton, Card } from "react-native-paper";
+import { db } from "./firebase";
+import { addDoc, collection } from "firebase/firestore";
 
 export default function App() {
-  const [input, setInput] = useState([]);
+  const [input, setInput] = useState({});
   const [isExpense, setIsExpense] = useState(true);
   const toggleSwitch = () => setIsExpense((previousState) => !previousState);
   const [expense, setExpense] = useState(true);
@@ -23,7 +25,25 @@ export default function App() {
   const [showModal, setShowModal] = useState(false);
   const [family, setFamily] = useState(false);
 
-  console.log(input);
+  // Add item to Firestore collection
+  //  const cloudStorage = collection(db, 'expense');
+  //  const recentArrayAdd = input[input.length-1];
+  //  if (input.length !== 0) {
+  //    const recentFirestoreAdd = await addDoc(cloudStorage, recentArrayAdd);
+  //    console.log('New item added: ' + recentFirestoreAdd.id);
+  //  }
+
+  const cloudStorage = collection(db, "expense");
+  const recentArrayAdd = {
+    personal: family ? "false" : "true",
+    expense: expense ? "true" : "false",
+    amount: amount !== 0 && amount,
+    description: text !== "" && text,
+  };
+  async function addNew() {
+    await addDoc(cloudStorage, recentArrayAdd);
+  }
+
   return (
     <SafeAreaView style={styles.parent}>
       <Modal
@@ -44,22 +64,28 @@ export default function App() {
             />
             <Text>Expense</Text>
           </View>
-          <CurrencyInput style={styles.input} value={amount} prefix="$" delimiter="," separator="." precision={2} minValue={0} onChangeValue={onChangeAmount}/>
-          <TextInput style={styles.input} value={text} onChangeText={onChangeText} />
+          <CurrencyInput
+            style={styles.input}
+            value={amount}
+            prefix="$"
+            delimiter=","
+            separator="."
+            precision={2}
+            minValue={0}
+            onChangeValue={onChangeAmount}
+          />
+          <TextInput
+            style={styles.input}
+            value={text}
+            onChangeText={onChangeText}
+          />
           <Pressable
             onPress={() => {
-              setInput([...input, {
-                personal: family ? 'false':'true',
-                expense: expense ? 'true':'false',
-                amount: amount !== 0 && amount,
-                description: text !== "" && text
-              }]);
+              addNew();
               setShowModal(!showModal);
             }}
           >
-            <Text>
-              Done
-            </Text>
+            <Text>Done</Text>
           </Pressable>
         </View>
       </Modal>
@@ -96,16 +122,16 @@ export default function App() {
 
       {/* Output Component - set up using Redux or Firebase */}
       <View style={styles.output}>
-        {input.map((item, i) => {
+        {/* {input.map((item, i) => {
           return (
             <View style={styles.item} key={item[i]}>
-              <Text>{item.family ? 'Family':'Personal'}</Text>
-              <Text>{item.expense ? 'Expense' : 'Income'}</Text>
+              <Text>{item.family ? "Family" : "Personal"}</Text>
+              <Text>{item.expense ? "Expense" : "Income"}</Text>
               <Text>{item.amount}</Text>
               <Text>{item.description}</Text>
             </View>
           );
-        })}
+        })} */}
       </View>
     </SafeAreaView>
   );
@@ -127,12 +153,8 @@ const styles = StyleSheet.create({
   output: {
     flex: 2,
   },
-  input: {
-
-  },
-  item: {
-
-  },
+  input: {},
+  item: {},
   paragraph: {
     margin: 0,
     marginLeft: 10,

@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -18,3 +18,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 export const db = getFirestore(app);
+
+// const cloudStorage = collection(db, 'expense');
+//  const recentArrayAdd = input[input.length-1];
+//  const recentArrayAdd = {
+//   personal: true,
+//   expense: true,
+//   amount: 50.40,
+//   description: "test"
+//  };
+//  const recentFirestoreAdd = await addDoc(cloudStorage, recentArrayAdd);
+ 
