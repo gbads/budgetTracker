@@ -36,6 +36,8 @@ export default function App() {
             <Text>Income</Text>
             <Switch
               trackColor={{ false: "#1CD521", true: "#E63009" }}
+              thumbColor={"#fff"}
+              activeThumbColor={"#fff"}
               ios_backgroundColor="#E5E5E5"
               onValueChange={toggleSwitch}
               value={isExpense}
@@ -124,6 +126,8 @@ const styles = StyleSheet.create({
   },
   output: {
     flex: 2,
+  },
+  input: {
 
   },
   item: {
