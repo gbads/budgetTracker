@@ -21,12 +21,12 @@ export default function InputExpense() {
   const [text, onChangeText] = useState("");
   const [amount, onChangeAmount] = useState(0);
   const [showModal, setShowModal] = useState(false);
-  const [family, setFamily] = useState(false);
+  const [personal, setPersonal] = useState(true);
 
   const cloudStorage = collection(db, "expense");
   const recentArrayAdd = {
-    personal: family ? "false" : "true",
-    expense: isExpense ? "true" : "false",
+    allocation: personal ? "Personal" : "Family",
+    type: isExpense ? "Expense" : "Income",
     amount: amount !== 0 && amount,
     description: text !== "" && text,
   };
@@ -87,8 +87,8 @@ export default function InputExpense() {
         <View style={style.radioButton}>
           <RadioButton
             value="option1"
-            status={family === false ? "checked" : "unchecked"}
-            onPress={() => setFamily(false)}
+            status={personal === true ? "checked" : "unchecked"}
+            onPress={() => setPersonal(true)}
             color="#007BFF"
           />
           <Text style={style.radioLabel}>Personal</Text>
@@ -97,8 +97,8 @@ export default function InputExpense() {
         <View style={style.radioButton}>
           <RadioButton
             value="option2"
-            status={family === true ? "checked" : "unchecked"}
-            onPress={() => setFamily(true)}
+            status={personal === false ? "checked" : "unchecked"}
+            onPress={() => setPersonal(false)}
             color="#007BFF"
           />
           <Text style={style.radioLabel}>Family</Text>
