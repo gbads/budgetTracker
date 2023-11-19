@@ -63,4 +63,27 @@ export default StyleSheet.create({
         fontSize: 16,
         color: "#333",
     },
+    boxtext: {
+        fontSize: 20,
+        fontWeight: "bold",
+        textAlign: "left",
+    },
+    boxinput: {
+        height: 40,
+        padding: 10,
+        borderWidth: 1,
+    },
+    boxmultiline :{
+        minHeight: 100,
+        textAlignVertical: 'top',
+    },
+    formcontainer: {
+        flex: 1,
+        padding: 30,
+    },
+    header: {
+        fontSize: 30,
+        alignSelf: 'center',
+    }
+
 })
