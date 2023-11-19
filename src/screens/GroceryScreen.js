@@ -1,7 +1,8 @@
 import { View, Text, Button, SafeAreaView } from "react-native";
 import s from "../styles/style";
+import GroceryList from "../components/GroceryList";
 
-const GroceryList = () => {
+const GroceryScreen = () => {
     return (
         <View style={s.container}>
             <Text>GroceryList</Text>
@@ -9,4 +10,4 @@ const GroceryList = () => {
     )
 }
 
-export default GroceryList;
+export default GroceryScreen;

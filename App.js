@@ -1,7 +1,7 @@
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import Budgeting from './src/screens/Budgeting';
-import GroceryList from './src/screens/GroceryList';
 import { NavigationContainer } from '@react-navigation/native';
+import BudgetScreen from './src/screens/BudgetScreen';
+import GroceryScreen from './src/screens/GroceryScreen';
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -9,8 +9,8 @@ export default function MyTabs() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Budgeting" component={Budgeting} />
-        <Tab.Screen name="GroceryList" component={GroceryList} />
+        <Tab.Screen name="BudgetScreen" component={BudgetScreen} />
+        <Tab.Screen name="GroceryScreen" component={GroceryScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );

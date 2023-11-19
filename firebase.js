@@ -18,14 +18,3 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 // Initialize Cloud Firestore and get a reference to the service
 export const db = getFirestore(app);
-
-// const cloudStorage = collection(db, 'expense');
-//  const recentArrayAdd = input[input.length-1];
-//  const recentArrayAdd = {
-//   personal: true,
-//   expense: true,
-//   amount: 50.40,
-//   description: "test"
-//  };
-//  const recentFirestoreAdd = await addDoc(cloudStorage, recentArrayAdd);
- 
