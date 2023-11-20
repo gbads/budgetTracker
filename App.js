@@ -15,7 +15,7 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator
-        initialRouteName='Grocery'
+        initialRouteName='Budget'
         activeColor='green'
         shifting={true}
         sceneAnimationEnabled={true}

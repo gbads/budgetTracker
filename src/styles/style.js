@@ -13,15 +13,6 @@ export default StyleSheet.create({
         justifyContent: "center",
         padding: 24,
     },
-    output: {
-        flex: 2,
-    },
-    input: {
-
-    },
-    item: {
-
-    },
     paragraph: {
         margin: 0,
         marginLeft: 10,
@@ -84,6 +75,22 @@ export default StyleSheet.create({
     header: {
         fontSize: 30,
         alignSelf: 'center',
+    },
+    // Output Styles
+    outputView: {
+        alignItems: 'center',
+        flex: 2,
+        marginTop: 20
+    },
+    outputItem: {
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignSelf: 'flex-start',
+        margin: 15,
+        gap: 20,
+        flex: 1
+    },  
+    item: {
     }
 
 })

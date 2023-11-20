@@ -1,7 +1,6 @@
 import { View, Text, Button, SafeAreaView } from "react-native";
 import s from "../styles/style";
-import InputExpense from "../components/InputExpense";
-import Output from "../components/Output";
+import {InputExpense, Output} from '../components';
 
 export default function BudgetScreen() {
     return (
