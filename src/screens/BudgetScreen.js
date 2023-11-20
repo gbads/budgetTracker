@@ -3,7 +3,7 @@ import s from "../styles/style";
 import InputExpense from "../components/InputExpense";
 import Output from "../components/Output";
 
-const BudgetScreen = () => {
+export default function BudgetScreen() {
     return (
         <SafeAreaView style={s.parent}>
             <InputExpense/>
@@ -11,5 +11,3 @@ const BudgetScreen = () => {
         </SafeAreaView>
     )
 }
-
-export default BudgetScreen;
