@@ -1,28 +1,37 @@
 import { Text, View, Image, Pressable } from "react-native";
 import style from "../styles/style";
 import { db } from "../../firebase";
-import { getDocs, collection } from "firebase/firestore";
+import { query, onSnapshot, collection } from "firebase/firestore";
+import { useState, useEffect } from "react";
 
-// const query = await getDocs(collection(db, "expense"));
+
 
 // console.log(query);
 export default function InputExpense() {
-  const outputArr = [];
 
-  // query.forEach((doc) => {
-  //   let docDetails = doc.data();
+const [outputArr, setOutputArr] = useState([]);
 
-  //   outputArr.push({ id: doc.id, details: docDetails });
-  // });
+
+    const q = query(collection(db, "expense"));
+
+    onSnapshot(q, (querySnapshot) =>{  
+      let newEntries = [];
+
+      querySnapshot.forEach((doc) => {
+        let docDetails = doc.data();
+        newEntries.push({ id: doc.id, details: docDetails });
+      });
+      setOutputArr(newEntries);
+    })  
 
   return (
     <>
       {outputArr.map((item) => (
-        <View key={item.id}>
-          <Text>{item.details.allocation}</Text>
-          <Text>{item.details.type}</Text>
-          <Text>{item.details.amount}</Text>
-          <Text>{item.details.description}</Text>
+        <View key={item?.id}>
+          <Text>{item?.details?.allocation}</Text>
+          <Text>{item?.details?.type}</Text>
+          <Text>{item?.details?.amount}</Text>
+          <Text>{item?.details?.description}</Text>
         </View>
       ))}
     </>
