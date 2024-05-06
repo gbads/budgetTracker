@@ -29,8 +29,8 @@ const [outputArr, setOutputArr] = useState([]);
       {outputArr.map((item) => (
         <View key={item?.id} style={style.output}>
           <Text style={style.item}>{item?.details?.allocation}</Text>
-          <Text style={style.item}>{item?.details?.type}</Text>
-          <Text style={style.item}>{item?.details?.amount}</Text>
+          <Text style={[style.item, item?.details?.type == "Expense" ? style.expense : style.income]}>{item?.details?.type}</Text>
+          <Text style={style.item}>${item?.details?.amount}</Text>
           <Text style={style.item}>{item?.details?.description}</Text>
         </View>
       ))}

@@ -25,6 +25,12 @@ export default StyleSheet.create({
         width: "25%",
         verticalAlign: "middle",
     },
+    expense: {
+        color: "red",
+    },
+    income: {
+        color: "green",
+    },
     paragraph: {
         margin: 0,
         marginLeft: 10,
