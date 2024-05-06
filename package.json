@@ -32,7 +32,7 @@
   "private": true,
   "jest": {
     "setupFiles": [
-      "<rootDir>/src/jest-setup.js"
+      "./mock.js"
     ]
   }
 }
