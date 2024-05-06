@@ -14,13 +14,16 @@ export default StyleSheet.create({
         padding: 24,
     },
     output: {
-        flex: 2,
+        flexDirection: "row",
+        flex: 3,
+        padding: "1rem",
     },
     input: {
 
     },
     item: {
-
+        width: "25%",
+        verticalAlign: "middle",
     },
     paragraph: {
         margin: 0,

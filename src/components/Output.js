@@ -27,11 +27,11 @@ const [outputArr, setOutputArr] = useState([]);
   return (
     <>
       {outputArr.map((item) => (
-        <View key={item?.id}>
-          <Text>{item?.details?.allocation}</Text>
-          <Text>{item?.details?.type}</Text>
-          <Text>{item?.details?.amount}</Text>
-          <Text>{item?.details?.description}</Text>
+        <View key={item?.id} style={style.output}>
+          <Text style={style.item}>{item?.details?.allocation}</Text>
+          <Text style={style.item}>{item?.details?.type}</Text>
+          <Text style={style.item}>{item?.details?.amount}</Text>
+          <Text style={style.item}>{item?.details?.description}</Text>
         </View>
       ))}
     </>
