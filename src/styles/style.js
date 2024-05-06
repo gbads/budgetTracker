@@ -75,7 +75,7 @@ export default StyleSheet.create({
     },
     boxmultiline :{
         minHeight: 100,
-        textAlignVertical: 'top',
+        verticalAlign: 'top',
     },
     formcontainer: {
         flex: 1,
